@@ -1,0 +1,5 @@
+name: 'Check README'
+description: 'Check if README.md exists in the root of the repository.'
+runs:
+  using: 'node12'
+  main: 'dist/main.js'
