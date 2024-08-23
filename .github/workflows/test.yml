@@ -22,4 +22,5 @@ jobs:
       - name: build dist
         run: npm run build
 
-      
+      - name: show dist
+        run: ls -la      
