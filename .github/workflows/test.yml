@@ -23,4 +23,7 @@ jobs:
         run: npm run build
 
       - name: show dist
-        run: ls -la      
+        run: |
+          ls -la
+          cd dist
+          ls -la
