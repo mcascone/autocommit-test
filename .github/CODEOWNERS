@@ -1,4 +1,4 @@
 # specifies @github-actions[bot] as the owner of the dist directories, 
 # ensuring any changes to these directories are attributed to the GitHub Actions bot.
 # Since the bot is the only entity making changes to these directories, the code owner review rule is inherently satisfied.
-**/dist/ @github-actions[bot]
+<!-- **/dist/ @github-actions[bot] -->
