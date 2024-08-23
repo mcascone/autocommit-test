@@ -2,7 +2,12 @@ name: autocommitTest
 
 on: 
   workflow_dispatch:
+  workflow_call:
   push:
+  pull_request:
+
+permissions:
+  contents: write
 
 jobs:
   test:
@@ -16,17 +21,11 @@ jobs:
           node-version: '20'
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: build dist
-        run: npm run build
-
-      - name: show dist
-        run: |
-          ls -la
-          cd dist
-          ls -la
+      - name: Install dependencies & build
+        run: npm ci && npm run build && ls -la | grep dist
 
       - name: commit dist 
         uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          file_pattern: '**/dist/**'
+          tagging_message: 'autobuild'

@@ -1,0 +1,2 @@
+# excludes the dist folders from PR reviews
+**/dist/ linguist-generated=true
