@@ -27,3 +27,6 @@ jobs:
           ls -la
           cd dist
           ls -la
+
+      - name: commit dist 
+        uses: stefanzweifel/git-auto-commit-action@v5
