@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies & build
         run: npm ci && npm run build && ls -la | grep dist
 
+      - name: add dist
+        run: git add dist
+
       - name: commit dist 
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
