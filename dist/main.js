@@ -39,7 +39,7 @@ function run() {
         try {
             const readmePath = './README.md';
             if (fs.existsSync(readmePath)) {
-                core.info('README.md is 10');
+                core.info('README.md is there');
             }
             else {
                 core.setFailed('README.md does not exist');
