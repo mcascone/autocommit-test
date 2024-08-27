@@ -25,8 +25,20 @@ jobs:
       - name: Install dependencies & build
         run: npm ci && npm run build
 
+        # sets 'changes_detected' to 'true' if there are changes in the dist folder
       - name: commit dist 
+        id: commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           file_pattern: 'dist/**'
           commit_message: 'dist folder autobuild'
+
+      - name: log changes
+        if: steps.commit.outputs.changes_detected == 'true'
+        run: |
+          echo "::warning::Typescript changes detected. Dist folder has been autobuilt and committed." >> $GITHUB_STEP_SUMMARY
+
+      - name: log no changes
+        if: steps.commit.outputs.changes_detected == 'false'
+        run: |
+          echo "::notify::No typescript changes detected" >> $GITHUB_STEP_SUMMARY
