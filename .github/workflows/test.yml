@@ -33,15 +33,15 @@ jobs:
           file_pattern: 'dist/**'
           commit_message: 'dist folder autobuild'
 
-      - name: log changes
-        if: steps.commit.outputs.changes_detected == 'true'
+      - name: log if changes
+        env: 
+          changes_detected: ${{ steps.commit.outputs.changes_detected }}
         run: |
-          echo "Typescript changes detected. Dist folder has been autobuilt and committed."
-          echo ":package: Typescript changes detected. Dist folder has been autobuilt and committed." >> $GITHUB_STEP_SUMMARY
-
-
-      - name: log no changes
-        if: steps.commit.outputs.changes_detected == 'false'
-        run: |
-          echo "No typescript changes detected"
-          echo ":memo: No typescript changes detected. No new commit." >> $GITHUB_STEP_SUMMARY
+          if [ "$changes_detected" == "true" ]; then
+            echo "Typescript changes detected. Dist folder has been autobuilt and committed."
+            echo ":package: Typescript changes detected. Dist folder has been autobuilt and committed." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "No typescript changes detected"
+            echo ":memo: No typescript changes detected. No new commit." >> $GITHUB_STEP_SUMMARY
+          fi
+          
