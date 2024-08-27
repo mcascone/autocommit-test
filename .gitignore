@@ -1,3 +1,4 @@
 node_modules/
 
-dist/
+# don't ignore 'dist' - needed for Actions
+!dist/
