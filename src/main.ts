@@ -6,7 +6,7 @@ async function run(): Promise<void> {
   try {
     const readmePath = './README.md';
     if (fs.existsSync(readmePath)) {
-      core.info('README.md is there');
+      core.info('README.md is 1');
     } else {
       core.setFailed('README.md does not exist');
     }
