@@ -26,14 +26,14 @@ jobs:
         run: npm ci && npm run build
 
         # sets 'changes_detected' output to 'true' if there are changes in the dist folder
-      - name: commit dist 
+      - name: Auto Commit if dist was built 
         id: commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           file_pattern: 'dist/**'
           commit_message: 'dist folder autobuild'
 
-      - name: log if changes
+      - name: Log if changes
         env: 
           changes_detected: ${{ steps.commit.outputs.changes_detected }}
         run: |
