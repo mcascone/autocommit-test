@@ -25,6 +25,10 @@ jobs:
       - name: Install dependencies & build
         run: npm ci && npm run build
 
+      - name: unignore dist folder
+        run: |
+          echo '!dist/' >> .gitignore
+
         # sets 'changes_detected' to 'true' if there are changes in the dist folder
       - name: commit dist 
         id: commit
@@ -32,6 +36,10 @@ jobs:
         with:
           file_pattern: 'dist/**'
           commit_message: 'dist folder autobuild'
+
+      - name: re-ignore dist
+        run: |
+          sed -i '' '/!dist\//d' .gitignore
 
       - name: log if changes
         env: 
