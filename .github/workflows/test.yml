@@ -28,4 +28,5 @@ jobs:
         with:
           file_pattern: 'dist/**'
           tagging_message: 'autobuild'
-          push_options: --tags
+          commit_message: 'dist folder autobuild'
+          push_options: --force --tags
