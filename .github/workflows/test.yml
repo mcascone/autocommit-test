@@ -28,4 +28,4 @@ jobs:
         with:
           file_pattern: 'dist/**'
           tagging_message: 'autobuild'
-          push_options: --force
+          push_options: --tags
