@@ -39,7 +39,7 @@ function run() {
         try {
             const readmePath = './README.md';
             if (fs.existsSync(readmePath)) {
-                core.info('README.md is on a branch that is being pushed');
+                core.info('README.md is found');
             }
             else {
                 core.setFailed('README.md does not exist');
