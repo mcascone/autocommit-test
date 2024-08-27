@@ -39,7 +39,7 @@ jobs:
 
       - name: re-ignore dist
         run: |
-          sed -i '' '/!dist\//d' .gitignore
+          sed -i '/!dist\//d' .gitignore
 
       - name: log if changes
         env: 
